@@ -7,6 +7,11 @@ body {
     background-size: 100px;
 }
 
+img {
+    background-color: transparent !important;
+    transition-property: none !important;  
+}
+
 #photo-box {
     text-align: center !important;
     background-color: white;

@@ -108,7 +108,8 @@
                 state.uploadedImageSrc = URL.createObjectURL(event.target.files[0])
                 console.log(state.uploadedImageSrc)
                 const laserURL = "https://happy-minsky-a19081.netlify.app/lazer.png"
-                const hatURL = "https://admiring-goldstine-6dbce5.netlify.app/santa.png"
+                const hatURL = "https://admiring-goldstine-6dbce5.netlify.app/hat1.png"
+                // const hatURL = "https://admiring-goldstine-6dbce5.netlify.app/hat1.png"
                 const lazerWrapper = document.createElement("div")
                 lazerWrapper.setAttribute("id","lazer-wrapper")
                 if (!document.getElementById('uploaded')) {
@@ -139,7 +140,10 @@
                 lazerWrapper.appendChild(hat);
                 lazerWrapper.appendChild(laser1);
                 lazerWrapper.appendChild(laser2);
+
                 hat.setAttribute('margin-left',"1000px")
+                hat.setAttribute('css',"background-color: transparent !important; transition-property: none !important")
+
                 laser1.setAttribute('margin-left',"1000px")
                 laser2.setAttribute('margin-left',"1000px")
                 hat.src = hatURL
