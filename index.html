@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <link rel=icon sizes=16x16 href=favicon.png>
+    <link rel=icon sizes=16x16 href=santa.png>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
     <title>Make Your Own Laser Eyes Profile Picture | Deeter Cesler</title>
     <script type="text/javascript" src="./html2canvas.js"></script>
@@ -15,12 +15,12 @@
 <body>
     <div id="sloppy-wrapper">
         <div class="list">
-            <h1>Create a Laser Eyes PFP</h1>
+            <h1>add a Santa hat to any photo</h1>
             <br/>
             <br/>
-            <p>1. Upload a photo.</p>
-            <p>2. Click over your eyes to add lasers (max two).</p>
-            <p>3. Click "Take Screenshot" to download your photo.</p>
+            <p>1. Upload a photo</p>
+            <p>2. Click over your head to add a hat</p>
+            <p>3. Click "Take Screenshot" to download your photo</p>
         </div>
         <div id="photo-box">
             <div id="app">
@@ -107,9 +107,7 @@
                 console.log('change')
                 state.uploadedImageSrc = URL.createObjectURL(event.target.files[0])
                 console.log(state.uploadedImageSrc)
-                const laserURL = "https://happy-minsky-a19081.netlify.app/lazer.png"
-                const hatURL = "https://admiring-goldstine-6dbce5.netlify.app/hat1.png"
-                // const hatURL = "https://admiring-goldstine-6dbce5.netlify.app/hat1.png"
+                const laserURL = "http://localhost:3001/santa.png"
                 const lazerWrapper = document.createElement("div")
                 lazerWrapper.setAttribute("id","lazer-wrapper")
                 if (!document.getElementById('uploaded')) {
@@ -126,29 +124,20 @@
                 var xPosition;
                 var yPosition;
 
-                const hat = new Image()
                 const laser1 = new Image()
                 const laser2 = new Image()
-                hat.setAttribute('crossOrigin', 'anonymous');
                 laser1.setAttribute('crossOrigin', 'anonymous');
                 laser2.setAttribute('crossOrigin', 'anonymous');
-                hat.setAttribute('id',"hat")
                 laser1.setAttribute('id',"one")
                 laser2.setAttribute('id',"two")
                 laser1.setAttribute('class',"laser")
                 laser2.setAttribute('class',"laser")
-                lazerWrapper.appendChild(hat);
                 lazerWrapper.appendChild(laser1);
                 lazerWrapper.appendChild(laser2);
-
-                hat.setAttribute('margin-left',"1000px")
-                hat.setAttribute('css',"background-color: transparent !important; transition-property: none !important")
-
                 laser1.setAttribute('margin-left',"1000px")
                 laser2.setAttribute('margin-left',"1000px")
-                hat.src = hatURL
-                // laser1.src = laserURL
-                // laser2.src = laserURL                
+                laser1.src = laserURL
+                laser2.src = laserURL                
             
 
                 let eye = "left"
@@ -181,24 +170,17 @@
                     }
                 }
 
-                const placeHat = () => {
-                    hat.style.left = xPosition + "px"
-                    hat.style.top = yPosition + "px"
-                }
-
                 function getClickPosition(e) {
                     const bounds = image.getBoundingClientRect();
                     const relativeXBoundary = e.clientX - bounds.left;
                     const relativeYBoundary = e.clientY - bounds.top;
-                    console.log(bounds)
-                    console.log(relativeXBoundary)
-                    console.log(relativeYBoundary)
 
-                    xPosition = relativeXBoundary - (hat.width/2);
-                    yPosition = relativeYBoundary - (hat.height/2);
+                    xPosition = relativeXBoundary - (laser1.width /2) - 30;
+                    yPosition = relativeYBoundary - (laser1.height/2) - 10;
 
-                    placeHat();
+                    placeLaser(eye);
                     
+                    // toggleEye();
                 }
             });
         </script>
